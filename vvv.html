@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			background-color: #aaa;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500" fill="#aaa"></canvas>
+	<a href="">clear</a>
+</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var cobj = canvas.getContext("2d");
+
+		 	canvas.onmousedown = function(e) {
+		 		var startX = e.layerX;
+		 		var	startY = e.layerY;
+		 		cobj.moveTo(startX,startY);
+		 		canvas.onmousemove = function(e) {
+		 			var endX = e.layerX;
+		 			var	endY = e.layerY;
+		 			cobj.lineTo(endX,endY); 
+		 			cobj.strokeStyle = "#ffffff";
+		 			cobj.stroke();
+		 		}
+		 		canvas.onmouseup = function(e) {
+		 			canvas.onmousemove = null;
+		 			canvas.onmouseup = null;
+		 		}		
+		 	}
+	</script>
+</html>
